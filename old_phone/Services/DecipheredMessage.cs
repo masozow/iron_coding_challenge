@@ -15,21 +15,37 @@ namespace old_phone.Services
                 return "Invalid input";
             }
             string newMessage = "";
+            char theCharacter = message[0];
             int counter = 0;
             if (message.Length > 1)
             {
-                for (int i = 0; i < message.Length - 1; i++)
+                for (int i = 1; i < message.Length; i++)
                 {
-                    if (message[i] == message[i + 1] || message[i] != '#')
+                    if (message[i] == theCharacter)
                     {
                         counter++;
-                        Console.WriteLine($"Counter: {counter}");
+                        Console.WriteLine("Counter: " + counter);
                     }
                     else
                     {
-                        newMessage += HashingNumberToChar.GetChar(message[i], counter);
-                        counter = i;
+                        // Console.WriteLine("Actual character: " + message[i]);
+                        // Console.WriteLine("Entering the string assembly: " + counter);
+                        if (message[i] == ' ')
+                        {
+                            counter = 0;
+                            theCharacter = message[i+1];
+                            i++;
+                            continue; 
+                        }else{
+                            if(theCharacter!='*'&&counter>=1){
+                                newMessage += HashingNumberToChar.GetChar(theCharacter, message[i] == '*' ? counter - 1 : counter);    
+                            }
+                            // Console.WriteLine("newMessage: " + newMessage);
+                            counter = 0;
+                            theCharacter = message[i];
+                        }
                     }
+                    if (message[i] == '#') break;
                 }
             }
             else

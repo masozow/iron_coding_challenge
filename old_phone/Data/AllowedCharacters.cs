@@ -7,6 +7,6 @@ namespace old_phone.Data
 {
     public readonly struct AllowedCharacters
     {
-        public static readonly char[] AllowedCharactersArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '*', '#'];
+        public static readonly char[] AllowedCharactersArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '*', '#', ' '];
     }
 }

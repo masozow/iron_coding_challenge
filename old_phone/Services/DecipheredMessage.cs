@@ -6,7 +6,7 @@ using static old_phone.Services.Validation;
 
 namespace old_phone.Services
 {
-    public class DecipheredMessage
+    public static class DecipheredMessage
     {
         public static string OldPhonePad(ValidateMessageDelegate validationMethod, string message)
         {

@@ -11,6 +11,7 @@ This project is a simple translator that takes a string of numbers and converts 
 To run the program, navigate to the project directory and execute the following command:
 
 `dotnet run`
+
 This will compile and run the program, allowing you to input a string of numbers and see the corresponding translated string of letters.
 
 ### Running Tests
@@ -18,6 +19,7 @@ This will compile and run the program, allowing you to input a string of numbers
 To run the unit tests for this project, execute the following command:
 
 `dotnet test`
+
 This will run all the tests in the NumberMessage_TranslateTo_TextMessage test class, including the test cases in the OldPhonePadTestData enumerable.
 
 ### Adding More Test Cases
@@ -25,14 +27,13 @@ This will run all the tests in the NumberMessage_TranslateTo_TextMessage test cl
 To add more test cases to the OldPhonePadTestData enumerable, simply add a new tuple to the list with the input string and expected output string. For example:
 
 ```
-public static IEnumerable<object[]> OldPhonePadTestData =>
-    new[]
-    {
-        new object[] { "227#", "B" },
-        new object[] { "22*#", "A" },
-        // Add new test case here
-        new object[] { "345#", "DEF" },
-    };
+public static IEnumerable<object[]> OldPhonePadTestData => new[]
+{
+    new object[] { "227#", "B" },
+    new object[] { "22*#", "A" },
+    // Add new test case here
+    new object[] { "345#", "DEF" },
+};
 ```
 
 Make sure to update the test case name and expected output string accordingly.

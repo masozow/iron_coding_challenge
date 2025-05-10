@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using old_phone.Utilities;
 using static old_phone.Services.Validation;
 
 namespace old_phone.Services
@@ -42,56 +43,47 @@ namespace old_phone.Services
 
             //Storing the first character to compare it with the next ones
             char theCharacter = message[0];
+            //Going through the message string
             for (int i = 1; i < message.Length; i++)
             {
+                //If the current character is the same as the stored one, we keep track of it's ocurrencies
                 if (message[i] == theCharacter)
                 {
                     counter++;
-                    Console.WriteLine("Counter: " + counter);
                 }
-                else if (message[i] == ' ')
+                else if (message[i] == ' ') //If the current character is a space
                 {
-                    if (counter > 0)
-                    {
-                        newMessage += HashingNumberToChar.GetChar(theCharacter, counter - 1);
-                    }
-                    theCharacter = message[i + 1];
-                    counter = 1;
-                    i++;
+                    newMessage = Handlers.SpaceHandler(ref counter, ref i, message, ref theCharacter, newMessage);
                 }
-                else if (message[i] == '*')
+                else if (message[i] == '*') //If the current character is an asterisk, we create the logic to remove the number ocurrency
                 {
-                    if (counter > 1)
-                    {
-                        counter--;
-                        newMessage += HashingNumberToChar.GetChar(theCharacter, counter - 1);
-                    }
-                    if (i + 1 < message.Length)
-                    {
-                        theCharacter = message[i + 1];
-                        counter = 1;
-                        i++;
-                    }
+                    newMessage = Handlers.AsteriskHandler(ref counter, ref i, message, ref theCharacter, newMessage);
                 }
-                else if (message[i] == '#')
+                else if (message[i] == '#') //If the current character is a hashtag, it's going to be the end of the message
                 {
-                    if (counter > 0)
+                    if (counter > 0) //If there were left any ocurrency of a number that hasn't been hashed and stored
                     {
                         newMessage += HashingNumberToChar.GetChar(theCharacter, counter - 1);
                     }
                     break;
                 }
-                else
+                else //If we haven't found any special character, there will be only numbers
                 {
+                    //Inside this else we enter if the current character is different from the stored one
+                    //so we'll store the corresponding character to the ocurrency of the number.
+                    //If there was only numbers, this were the only hashing and storing logic we needed
                     if (counter > 0)
                     {
                         newMessage += HashingNumberToChar.GetChar(theCharacter, counter - 1);
                     }
+                    //Store a new number or special character to compare it with the next ones
                     theCharacter = message[i];
+                    //Reset the counter
                     counter = 1;
                 }
             }
             return newMessage.ToUpper();
         }
+
     }
 }

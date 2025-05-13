@@ -4,6 +4,8 @@ Old phone keypad with alphabetical letters, a backspace key, and a send button
 
 ## Old Phone Pad Translator
 
+---
+
 This project is a simple translator that takes a string of numbers and converts it into a corresponding string of letters, using the old phone pad layout.
 
 ### Getting Started

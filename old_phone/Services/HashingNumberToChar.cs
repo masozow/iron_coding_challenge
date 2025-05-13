@@ -14,11 +14,14 @@ namespace old_phone.Services
         /// <param name="key">The numeric key from the keypad.</param>
         /// <param name="position">The position of the desired character within the key's character set.</param>
         /// <returns>The character at the specified position for the given key.</returns>
-        /// <exception cref="KeyNotFoundException">Thrown when the specified key is not present in the dictionary.</exception>
-        /// <exception cref="IndexOutOfRangeException">Thrown when the position is out of range for the character set of the specified key.</exception>
+        /// <remarks>
+        /// The method handles cases where the position is greater than the length of the character set by wrapping around to the start of the character set.
+        /// </remarks>
         public static char GetChar(char key, int position)
         {
-            return CharactersDictionary.TextCodesDictionary[key][position];
+            int charactersArrayLength = CharactersDictionary.TextCodesDictionary[key]?.Length ?? 0;
+            int newPosition = position >= charactersArrayLength ? position % CharactersDictionary.TextCodesDictionary[key].Length : position;
+            return CharactersDictionary.TextCodesDictionary[key][newPosition];
         }
     }
 }

@@ -4,7 +4,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Console.WriteLine("Write your message:");
+        Console.WriteLine("Write your message, always ending with a #:");
         string message = Console.ReadLine() ?? "";
         // string[] messages=["33#","227*#","4433555 555666#","8 88777444666*664#"];
         // foreach(string message in messages){

@@ -18,7 +18,10 @@ namespace old_phone.Services
         /// <exception cref="IndexOutOfRangeException">Thrown when the position is out of range for the character set of the specified key.</exception>
         public static char GetChar(char key, int position)
         {
-            return CharactersDictionary.TextCodesDictionary[key][position];
+            int charactersArrayLength = CharactersDictionary.TextCodesDictionary[key].Length;
+            int newPosition = position >= charactersArrayLength ? position % CharactersDictionary.TextCodesDictionary[key].Length : position;
+            Console.WriteLine("New position: " + newPosition);
+            return CharactersDictionary.TextCodesDictionary[key][newPosition];
         }
     }
 }

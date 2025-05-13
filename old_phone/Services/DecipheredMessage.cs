@@ -69,7 +69,7 @@ namespace old_phone.Services
                 }
                 else //If we haven't found any special character, there will be only numbers
                 {
-                    //Inside this else we enter if the current character is different from the stored one
+                    //Inside this else, we enter if the current character is different from the stored one
                     //so we'll store the corresponding character to the ocurrency of the number.
                     //If there was only numbers, this were the only hashing and storing logic we needed
                     if (counter > 0)

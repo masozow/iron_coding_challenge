@@ -20,13 +20,18 @@ namespace UnitTests.Tests
             Assert.Equal(expectedOutput, actualOutput);
         }
 
+        //Write everything uppercase, and don't forget the # symbol at the end of the message
         public static IEnumerable<object[]> OldPhonePadTestData =>
         [
             ["33#", "E"],
             ["227*#", "B"],
             ["4433555 555666#", "HELLO"],
             ["*6 666 6#", "MOM"],
-            ["6 666 6*#", "MO"]
+            ["6 666 6*#", "MO"],
+            ["22222*****5555444********#",""],
+            ["22222*****5555444***#","J"],
+            ["22222****5555444***#","AJ"],
+            ["****22222#","B"]
         ];
     }
 }

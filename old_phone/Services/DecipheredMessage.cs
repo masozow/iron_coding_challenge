@@ -26,7 +26,8 @@ namespace old_phone.Services
         public static string OldPhonePad(ValidateMessageDelegate validationMethod, string message)
         {
             //Validating the input to only receive numeric characters, space, asterisk and hashtag
-            if (!validationMethod(message))
+            //we also check that the input indeed contains a # symbol
+            if (!validationMethod(message) || !message.Contains('#'))
             {
                 return "Invalid input";
             }
@@ -34,12 +35,6 @@ namespace old_phone.Services
             string newMessage = "";
             //Counter to keep track of consecutive identical characters
             int counter = 1;
-
-            //Removing asteriks at the begining of the string, because they won't do anything
-            while (message[0] == '*')
-            {
-                message = message[1..];
-            }
 
             //Storing the first character to compare it with the next ones
             char theCharacter = message[0];
